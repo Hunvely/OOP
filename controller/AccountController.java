@@ -41,7 +41,7 @@ public class AccountController {
     }
 
     public String withdraw(Scanner input) {
-        System.out.print("Input the amount you wish to withdraw.");
+        System.out.println("Input the amount you wish to withdraw.");
         System.out.print("[Input Account Number] [Input Withdraw Amount] : ");
         return accountService.withdraw(new AccountBuilder()
                 .accountNum(input.next())

@@ -36,11 +36,12 @@ public class AccountServiceImpl implements AccountService {
                 double updateBalance = depositAmount + currentBalance;
                 acc.setBalance(updateBalance);
                 acc.setTransationDate(LocalDate.now());
-                return acc.getAccountHolder() + "'s deposit is completed";
+                return acc.getAccountHolder() + "'s deposit is completed. Current balance : " + acc.getBalance() + "won";
             }
         }
         return "Deposit failed. The account doesn't exist.";
     }
+
 
     @Override
     public String withdraw(AccountDto account) {
@@ -48,13 +49,17 @@ public class AccountServiceImpl implements AccountService {
             if (acc.getAccountNumber().equals(account.getAccountNumber())) {
                 double withdrawAmount = account.getBalance();
                 double currentBalance = acc.getBalance();
-                double updateBalance = withdrawAmount - currentBalance;
-                acc.setBalance(updateBalance);
-                acc.setTransationDate(LocalDate.now());
-                return acc.getAccountHolder() + "'s withdrawal is completed";
+                double updateBalance = currentBalance - withdrawAmount;
+                if (updateBalance >= 0) {
+                    acc.setBalance(updateBalance);
+                    acc.setTransationDate(LocalDate.now());
+                    return acc.getAccountHolder() + "'s withdrawal is completed. Current balance : " + acc.getBalance() + "won";
+                } else {
+                    return "Withdrawal is failed. Your balance is insufficient.";
+                }
             }
         }
-        return "Withdrawal failed. The account doesn't exist.";
+        return "Withdrawal is failed. The account doesn't exist.";
     }
 
     @Override
