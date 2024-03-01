@@ -1,0 +1,29 @@
+package oop.service;
+
+import oop.model.UserDto;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+
+public interface UserService {
+
+    String join(UserDto user);
+
+    String login(UserDto user);
+
+    UserDto myPage(Scanner input);
+
+    String passwordUpdate(Scanner input);
+
+    String deleteUser(Scanner input);
+
+    Map<String, UserDto> userList(Scanner input);
+
+    List<UserDto> findUserByName(Scanner input);
+
+    List<UserDto> findUserByJob(Scanner input);
+
+    String countUser();
+}
