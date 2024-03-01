@@ -51,11 +51,13 @@ public class AccountController {
     }
 
     public String getBalance(Scanner input) {
+        System.out.println("Enter the account number to check your balance.");
+        System.out.print("[Input] : ");
         return accountService.getBalance(input.next());
     }
 
     public String cancelAccount(Scanner input) {
-        System.out.print("Input the account number you wish to cancel.");
+        System.out.println("Enter the account number you wish to delete.");
         System.out.print("[Input] : ");
         return accountService.cancelAccount(input.next());
 

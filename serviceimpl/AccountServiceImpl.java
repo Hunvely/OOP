@@ -36,10 +36,10 @@ public class AccountServiceImpl implements AccountService {
                 double updateBalance = depositAmount + currentBalance;
                 acc.setBalance(updateBalance);
                 acc.setTransationDate(LocalDate.now());
-                return acc.getAccountHolder() + "'s deposit is completed. Current balance : " + acc.getBalance() + "won";
+                return acc.getAccountHolder() + "'s deposit is completed. Current balance of " + acc.getAccountHolder() + "'s account : " + acc.getBalance() + "won";
             }
         }
-        return "Deposit failed. The account doesn't exist.";
+        return "Sorry. Deposit failed. The account doesn't exist.";
     }
 
 
@@ -53,23 +53,34 @@ public class AccountServiceImpl implements AccountService {
                 if (updateBalance >= 0) {
                     acc.setBalance(updateBalance);
                     acc.setTransationDate(LocalDate.now());
-                    return acc.getAccountHolder() + "'s withdrawal is completed. Current balance : " + acc.getBalance() + "won";
+                    return acc.getAccountHolder() + "'s withdrawal is completed. Current balance of " + acc.getAccountHolder() + "'s account : " + acc.getBalance() + "won";
                 } else {
-                    return "Withdrawal is failed. Your balance is insufficient.";
+                    return "Sorry. Withdrawal is failed. Your balance is insufficient.";
                 }
             }
         }
-        return "Withdrawal is failed. The account doesn't exist.";
+        return "Sorry. Withdrawal is failed. The account doesn't exist.";
     }
 
     @Override
     public String getBalance(String accountNumber) {
+        for (AccountDto acc : accounts) {
+            if (acc.getAccountNumber().equals(accountNumber)) {
+                return "Current balance of " + acc.getAccountHolder() + "'s account : " + acc.getBalance();
+            }
+        }
 
-        return null;
+        return "Sorry. The account not found.";
     }
 
     @Override
     public String cancelAccount(String accountNumber) {
+        for (AccountDto acc : accounts) {
+            if (acc.getAccountNumber().equals(accountNumber)) {
+                accounts.remove(acc);
+                return "The account has been deleted. Thank you.";
+            }
+        }
         return null;
     }
 

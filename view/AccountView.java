@@ -41,11 +41,15 @@ public class AccountView {
                     break;
                 case "4":
                     System.out.println(" === Check your balance === ");
-                    accountCtrl.getBalance(input);
+                    String checkBalanceMsg = accountCtrl.getBalance(input);
+                    System.out.println(checkBalanceMsg);
+                    System.out.println();
                     break;
                 case "5":
                     System.out.println(" === Cancle your account === ");
-                    accountCtrl.cancelAccount(input);
+                    String cancelAccountMsg = accountCtrl.cancelAccount(input);
+                    System.out.println(cancelAccountMsg);
+                    System.out.println();
                     break;
                 case "6":
                     System.out.println(" === Load your transanction details === ");
