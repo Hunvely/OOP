@@ -1,7 +1,9 @@
 package oop.view;
 
 import oop.controller.UserController;
+import oop.model.UserDto;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class UserView {
@@ -39,19 +41,26 @@ public class UserView {
                     break;
                 case "3":
                     System.out.println("=== 마이페이지로 이동합니다. === ");
-                    userCtrl.myPage(input);
+                    System.out.println(userCtrl.myPage(input));
                     break;
                 case "4":
                     System.out.println(" === 비밀번호 변경을 진행합니다. === ");
-                    userCtrl.passwordUpdate(input);
+                    String pwUpdateMsg = userCtrl.passwordUpdate(input);
+                    System.out.println(pwUpdateMsg);
+                    System.out.println();
                     break;
                 case "5":
                     System.out.println(" === 회원 탈퇴를 진행합니다. === ");
-                    userCtrl.deleteUser(input);
+                    String deleteMsg = userCtrl.deleteUser(input);
+                    System.out.println(deleteMsg);
+                    System.out.println();
                     break;
                 case "6":
                     System.out.println(" === 회원 목록을 조회합니다. === ");
-                    userCtrl.userList(input);
+                    Map<String, UserDto> users = userCtrl.userList();
+                    users.forEach((k,v)->{
+                        System.out.printf("아이디: %s, 회원정보: %s", k, v);
+                    });
                     break;
                 case "7":
                     System.out.println(" === 회원 이름을 검색합니다. === ");

@@ -40,19 +40,20 @@ public class UserController {
     }
 
     public UserDto myPage(Scanner input) {
-        return null;
+        System.out.println("검색할 회원의 ID를 입력하세요.");
+        return user.myPage(input.next());
     }
 
     public String passwordUpdate(Scanner input) {
-        return null;
+        return user.passwordUpdate(input);
     }
 
     public String deleteUser(Scanner input) {
-        return null;
+        return user.deleteUser(input);
     }
 
-    public Map<String, UserDto> userList(Scanner input) {
-        return null;
+    public Map<String, UserDto> userList() {
+       return user.userList();
     }
 
     public List<UserDto> findUserByName(Scanner input) {

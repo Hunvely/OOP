@@ -13,13 +13,13 @@ public interface UserService {
 
     String login(UserDto user);
 
-    UserDto myPage(Scanner input);
+    UserDto myPage(String username);
 
     String passwordUpdate(Scanner input);
 
     String deleteUser(Scanner input);
 
-    Map<String, UserDto> userList(Scanner input);
+    Map<String, UserDto> userList();
 
     List<UserDto> findUserByName(Scanner input);
 
