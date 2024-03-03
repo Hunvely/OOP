@@ -60,10 +60,11 @@ public class AccountController {
         System.out.println("Enter the account number you wish to delete.");
         System.out.print("[Input] : ");
         return accountService.cancelAccount(input.next());
-
     }
 
     public List<AccountDto> getAccounts(Scanner input) {
-        return accountService.getAccounts();
+        System.out.println("Enter the account number for which you want to search account details.");
+        System.out.print("[Input] : ");
+        return accountService.getAccounts(input.next());
     }
 }

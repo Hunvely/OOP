@@ -34,8 +34,10 @@ public class AccountServiceImpl implements AccountService {
                 double depositAmount = account.getBalance();
                 double currentBalance = acc.getBalance();
                 double updateBalance = depositAmount + currentBalance;
+
                 acc.setBalance(updateBalance);
                 acc.setTransationDate(LocalDate.now());
+
                 return acc.getAccountHolder() + "'s deposit is completed. Current balance of " + acc.getAccountHolder() + "'s account : " + acc.getBalance() + "won";
             }
         }
@@ -50,9 +52,11 @@ public class AccountServiceImpl implements AccountService {
                 double withdrawAmount = account.getBalance();
                 double currentBalance = acc.getBalance();
                 double updateBalance = currentBalance - withdrawAmount;
+
                 if (updateBalance >= 0) {
                     acc.setBalance(updateBalance);
                     acc.setTransationDate(LocalDate.now());
+
                     return acc.getAccountHolder() + "'s withdrawal is completed. Current balance of " + acc.getAccountHolder() + "'s account : " + acc.getBalance() + "won";
                 } else {
                     return "Sorry. Withdrawal is failed. Your balance is insufficient.";
@@ -69,7 +73,6 @@ public class AccountServiceImpl implements AccountService {
                 return "Current balance of " + acc.getAccountHolder() + "'s account : " + acc.getBalance();
             }
         }
-
         return "Sorry. The account not found.";
     }
 
@@ -85,7 +88,13 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountDto> getAccounts() {
+    public List<AccountDto> getAccounts(String accountNumber) {
+        for (AccountDto acc : accounts) {
+            if (acc.getAccountNumber().equals(accountNumber)) {
+                return accounts;
+            }
+        }
+        //return "Sorry. The account not found.";
         return null;
     }
 }

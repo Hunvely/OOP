@@ -18,4 +18,5 @@ public class AccountDto {
     private String accountHolder; // 계좌 소유주
     private double balance; // 잔액
     private LocalDate transationDate; // 시간 저장
+
 }

@@ -17,5 +17,5 @@ public interface AccountService {
 
     String cancelAccount(String accountNumber);
 
-    public List<AccountDto> getAccounts();
+    public List<AccountDto> getAccounts(String accountNumber);
 }

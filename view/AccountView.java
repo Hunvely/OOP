@@ -53,7 +53,9 @@ public class AccountView {
                     break;
                 case "6":
                     System.out.println(" === Load your transanction details === ");
-                    accountCtrl.getAccounts(input);
+                    String loadMag = accountCtrl.getAccounts(input).toString();
+                    System.out.println(loadMag);
+                    System.out.println();
                     break;
             }
         }
